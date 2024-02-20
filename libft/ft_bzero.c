@@ -5,9 +5,7 @@ void ft_bzero(void *s, unsigned int n)
     while (i < n)
     {
         ((unsigned char *)s)[i] = '\0';
-
         i++;
     }
-
     return s;
 }
