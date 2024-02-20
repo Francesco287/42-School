@@ -1,7 +1,9 @@
-char *ft_strnstr(const char *big, const char *little, unsigned int len)
+#include "libft.h"
+
+char *ft_strnstr(const char *big, const char *little, size_t len)
 {
-    unsigned int i;
-    unsigned int j;
+    size_t i;
+    size_t j;
 
     i = 0;
     j = 0;
