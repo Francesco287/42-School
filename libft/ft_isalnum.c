@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 21:28:49 by fgaudio           #+#    #+#             */
+/*   Updated: 2024/02/21 21:28:49 by fgaudio          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
-    if (ft_isdigit(c) || ft_isalpha(c))
-        return 1;
-
-    return 0;
+	if (ft_isdigit(c) || ft_isalpha(c))
+		return (1);
+	return (0);
 }
