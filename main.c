@@ -3,6 +3,7 @@
 
 int main()
 {
-	char *s = "ciao mondo!";
-	printf("%s\n", ft_substr(s, 50, 100));
+	char *s1 = "ciao ";
+	char *s2 = "mondo!";
+	printf("%s\n", ft_strjoin(s1, s2));
 }
