@@ -3,6 +3,6 @@
 
 int main()
 {
-	char *s1 = " ciao mondo   ";
-	printf("%s\n", ft_strtrim(s1, " ciao"));
+	char *s = "ciao mondo";
+	printf("%s\n", ft_split(s, 'z')[1]);
 }
