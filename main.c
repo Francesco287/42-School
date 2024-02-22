@@ -3,6 +3,8 @@
 
 int main()
 {
-	char *s = "ciao mondo";
-	printf("%s\n", ft_split(s, 'z')[1]);
+	char *s = " woo ow woo ow woo ow ";
+	char **splatter = ft_split(s, ' ');
+	while (*splatter)
+		printf("%s\n", *splatter++);
 }

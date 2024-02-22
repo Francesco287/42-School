@@ -12,39 +12,46 @@
 
 #include "libft.h"
 
+static char	**gen_array(int nstrings, char *scpy)
+{
+	int		counters[2];
+	char	**res;
+
+	res = ft_calloc(nstrings + 1, sizeof(char *));
+	if (!res)
+		return (NULL);
+	counters[0] = -1;
+	while (++counters[0] < nstrings)
+	{
+		res[counters[0]] = ft_calloc(ft_strlen(scpy) + 1, sizeof(char));
+		if (!res[counters[0]])
+			return (NULL);
+		counters[1] = 0;
+		while (*scpy)
+			res[counters[0]][counters[1]++] = *scpy++;
+		scpy++;
+	}
+	return (res);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		nstrings;
 	char	*scpy;
-	char	**res;
-	int		i;
-	int		j;
+	char	**ret;
 
 	if (!s)
 		return (NULL);
-	scpy = ft_calloc(ft_strlen(s), sizeof(char));
+	scpy = ft_strdup(s);
 	if (!scpy)
 		return (NULL);
-	ft_strlcpy(scpy, s, ft_strlen(s) + 1);
 	nstrings = 1;
 	while (ft_strrchr(scpy, c))
 	{
 		*ft_strrchr(scpy, c) = '\0';
 		nstrings++;
 	}
-	res = ft_calloc(nstrings + 1, sizeof(char *));
-	if (!res)
-		return (NULL);
-	i = -1;
-	while (++i < nstrings)
-	{
-		res[i] = ft_calloc(ft_strlen(scpy) + 1, sizeof(char));
-		if (!res[i])
-			return (NULL);
-		j = -1;
-		while(*scpy)
-			res[i][++j] = *scpy++;
-		scpy++;
-	}
-	return (res);
+	ret = gen_array(nstrings, scpy);
+	free(scpy);
+	return (ret);
 }
