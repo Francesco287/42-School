@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"*.embeddedhtml": "html",
-		"libft.h": "c",
-		"stdlib.h": "c",
-		"unistd.h": "c"
-	}
-}
