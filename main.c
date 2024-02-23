@@ -3,5 +3,4 @@
 
 int main(int argc, char **argv)
 {
-	printf("%s\n", ft_itoa(-2147483648));
 }
