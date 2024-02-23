@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include "libft/libft.h"
 
-int main()
+int main(int argc, char **argv)
 {
-	char *s = " woo ow woo ow woo ow ";
-	char **splatter = ft_split(s, ' ');
-	while (*splatter)
-		printf("%s\n", *splatter++);
+	printf("%s\n", ft_itoa(-2147483648));
 }
