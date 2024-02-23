@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:00:45 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/21 22:00:45 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:51:22 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
-	int		i;
+	size_t	i;
 
 	if (start >= ft_strlen(s))
 	{

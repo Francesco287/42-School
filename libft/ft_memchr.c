@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 21:30:23 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/21 21:30:23 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/02/23 16:48:26 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	f;
-	int				i;
+	size_t			i;
 
 	f = (unsigned char)c;
 	i = 0;

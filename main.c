@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "libft/libft.h"
 
-int main(int argc, char **argv)
+int main()
 {
+	printf("Ciao mondo!\n");
 }
