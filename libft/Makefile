@@ -6,7 +6,7 @@
 #    By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 17:17:35 by fgaudio           #+#    #+#              #
-#    Updated: 2024/02/23 19:29:07 by fgaudio          ###   ########.fr        #
+#    Updated: 2024/02/23 19:32:39 by fgaudio          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FILES = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c 
 
 OBJS = $(FILES:.c=.o)
 
-FILESBONUS = ft_lstnew_bonus.c
+FILESBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c
 
 OBJSBONUS = $(FILESBONUS:.c=.o)
 
