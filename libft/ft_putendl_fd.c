@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 15:09:39 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/23 16:27:00 by fgaudio          ###   ########.fr       */
+/*   Created: 2024/02/23 16:24:22 by fgaudio           #+#    #+#             */
+/*   Updated: 2024/02/23 16:27:23 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned int	i;
-
-	if (!s || !f)
-		return (NULL);
-	i = -1;
-	while (s[++i])
-		(*f)(i, &s[i]);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
