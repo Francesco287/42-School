@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:52:52 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/25 14:56:27 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/02/25 18:05:28 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ char	**ft_split(char const *s, char c)
 	scpy = gen_mod_dup(s, c);
 	if (!scpy)
 		return (NULL);
+	if (!*scpy)
+	{
+		free(scpy);
+		return (ft_calloc(1, sizeof(char *)));
+	}
 	nstrings = 1;
-	while (ft_strrchr(scpy, c))
+	while (ft_strrchr(scpy, c) && c)
 	{
 		*ft_strrchr(scpy, c) = '\0';
 		nstrings++;
