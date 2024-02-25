@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:29:46 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/23 16:35:41 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/02/25 03:24:46 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
+	long	ln;
+
+	ln = n;
+	if (ln < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ln *= -1;
+	}
+	if (ln <= 9)
+		ft_putchar_fd(ln + '0', fd);
 	else
 	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n = n * -1;
-		}
-		if (n >= 9)
-		{
-			ft_putnbr_fd(n / 10, fd);
-		}
-		ft_putchar_fd((n % 10) + '0', fd);
+		ft_putnbr_fd(ln / 10, fd);
+		ft_putnbr_fd(ln % 10, fd);
 	}
 }
