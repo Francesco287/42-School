@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:52:52 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/02/22 19:54:25 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/02/25 14:56:27 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,28 @@ static char	**gen_array(int nstrings, char *scpy)
 	return (res);
 }
 
+static char	*gen_mod_dup(const char *s, char c)
+{
+	char	*trim;
+	int		i[2];
+	char	set[2];
+
+	set[0] = c;
+	set[1] = '\0';
+	trim = ft_strtrim(s, set);
+	i[0] = 0;
+	while (trim[i[0]])
+	{
+		i[1] = i[0];
+		if (trim[i[0] + 1] == trim[i[0]] && trim[i[0]] == c)
+			while (trim[++i[1]])
+				trim[i[1]] = trim[i[1] + 1];
+		else
+			i[0]++;
+	}
+	return (trim);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		nstrings;
@@ -42,7 +64,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	scpy = ft_strdup(s);
+	scpy = gen_mod_dup(s, c);
 	if (!scpy)
 		return (NULL);
 	nstrings = 1;

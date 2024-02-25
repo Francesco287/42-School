@@ -1,3 +1,4 @@
-.vscode/
-main*
-tester.sh
+/.vscode/
+/main*
+/tester.sh
+/Makefile
