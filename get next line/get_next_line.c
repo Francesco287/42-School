@@ -33,11 +33,11 @@ char	*get_next_line(int fd)
 int main()
 {
 	int fd = open("test.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	char *str;
+	for (int i = 0; i < 20; i++)
+	{
+		str = get_next_line(fd);
+		printf("%s", str);
+		free(str);
+	}
 }
