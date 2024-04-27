@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 00:50:20 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 01:09:47 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -38,14 +38,19 @@ char	*get_next_line(int fd)
 }
 
 // #include <fcntl.h>
-//
+
 // int main()
 // {
-// 	int fd = open("./gnlTester/files/big_line_with_nl", O_RDONLY);
+// 	int fd = open("test.txt", O_RDONLY);
+// 	int fd2 = open("test2.txt", O_RDONLY);
 // 	char *str;
-// 	for (int i = 0; i < 7; i++)
+// 	for (int i = 0; i < 10; i++)
 // 	{
 // 		str = get_next_line(fd);
+// 		printf("%s", str);
+// 		printf("\n-----------------\n");
+// 		free(str);
+// 		str = get_next_line(fd2);
 // 		printf("%s", str);
 // 		printf("\n-----------------\n");
 // 		free(str);

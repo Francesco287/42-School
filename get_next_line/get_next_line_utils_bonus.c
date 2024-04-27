@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 01:10:15 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 01:09:58 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	str_cpy(char *dest, const char *src, int size)
 {
@@ -50,28 +50,28 @@ int	add_one(char **str, int i)
 
 int	get_next_char(int fd, char **buffer, int i)
 {
-	static void	*s_buf[3];
+	static void	*s_buf[OPEN_MAX][3];
 
-	if (s_buf[0] == NULL)
+	if (s_buf[fd][0] == NULL)
 	{
-		s_buf[0] = malloc(BUFFER_SIZE * sizeof(char));
-		s_buf[1] = s_buf[0] + BUFFER_SIZE;
-		s_buf[2] = malloc(1 * sizeof(int));
-		if (s_buf[0] == NULL || s_buf[2] == NULL)
+		s_buf[fd][0] = malloc(BUFFER_SIZE * sizeof(char));
+		s_buf[fd][1] = s_buf[fd][0] + BUFFER_SIZE;
+		s_buf[fd][2] = malloc(1 * sizeof(int));
+		if (s_buf[fd][0] == NULL || s_buf[fd][2] == NULL)
 			return (-1);
 	}
-	if (s_buf[1] - s_buf[0] == BUFFER_SIZE)
+	if (s_buf[fd][1] - s_buf[fd][0] == BUFFER_SIZE)
 	{
-		*((int *)s_buf[2]) = (int)read(fd, (char *)s_buf[0], BUFFER_SIZE);
-		if (*((int *)s_buf[2]) == 0)
+		*((int *)s_buf[fd][2]) = (int)read(fd, (char *)s_buf[fd][0], BUFFER_SIZE);
+		if (*((int *)s_buf[fd][2]) == 0)
 			return (0);
-		s_buf[1] = s_buf[0];
+		s_buf[fd][1] = s_buf[fd][0];
 	}
-	if (s_buf[1] - s_buf[0] == *((int *)s_buf[2]))
+	if (s_buf[fd][1] - s_buf[fd][0] == *((int *)s_buf[fd][2]))
 		return (0);
-	if (add_one(buffer, i) || *((int *)s_buf[2]) == -1)
+	if (add_one(buffer, i) || *((int *)s_buf[fd][2]) == -1)
 		return (-1);
-	(*buffer)[i] = *((char *)s_buf[1]);
-	s_buf[1]++;
+	(*buffer)[i] = *((char *)s_buf[fd][1]);
+	s_buf[fd][1]++;
 	return (1);
 }
