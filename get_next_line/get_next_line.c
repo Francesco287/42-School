@@ -3,12 +3,21 @@
 char	*get_next_line(int fd)
 {
 	char	*buffer;
-	int	i;
+	int		i;
+	int		err_check;
 
+	if (fd < 0)
+		return (NULL);
 	i = 0;
-	while (get_next_char(fd, &buffer, i))
+	err_check = get_next_char(fd, &buffer, i);
+	while (err_check)
+	{
+		if (err_check == -1)
+			return (NULL);
 		if (buffer[i++] == '\n')
 			break;
+		err_check = get_next_char(fd, &buffer, i);
+	}
 	if (i == 0)
 		return (NULL);
 	add_one(&buffer, i);
@@ -16,20 +25,25 @@ char	*get_next_line(int fd)
 	return (buffer);
 }
 
+
+
+
+
+
+
+
+
+
+
 // #include <fcntl.h>
 
 // int main()
 // {
-// 	int fd = open("test.txt", O_RDONLY);
-// 	int fd2 = open("test2.txt", O_RDONLY);
+// 	int fd = open("./gnlTester/files/big_line_with_nl", O_RDONLY);
 // 	char *str;
 // 	for (int i = 0; i < 7; i++)
 // 	{
 // 		str = get_next_line(fd);
-// 		printf("%s", str);
-// 		printf("-----------------\n");
-// 		free(str);
-// 		str = get_next_line(fd2);
 // 		printf("%s", str);
 // 		printf("\n-----------------\n");
 // 		free(str);

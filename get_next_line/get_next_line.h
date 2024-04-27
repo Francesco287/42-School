@@ -10,7 +10,7 @@
 #endif
 
 char	*get_next_line(int fd);
-void	add_one(char **str, int i);
-int	get_next_char(int fd, char **buffer, int i);
+int		add_one(char **str, int i);
+int		get_next_char(int fd, char **buffer, int i);
 
 #endif

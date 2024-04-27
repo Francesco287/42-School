@@ -12,21 +12,28 @@ void	str_cpy(char *dest, const char *src, int size)
 	}
 }
 
-void	add_one(char **str, int i)
+int	add_one(char **str, int i)
 {
 	char	*tmp;
 
 	if (i == 0)
 	{
 		*str = malloc(1);
-		return ;
+		if (*str == NULL)
+			return (1);
+		return 0;
 	}
 	tmp = malloc(i);
+	if (tmp == NULL)
+		return (1);
 	str_cpy(tmp, *str, i);
 	free(*str);
 	*str = malloc(i + 1);
+	if (*str == NULL)
+		return (1);
 	str_cpy(*str, tmp, i);
 	free(tmp);
+	return (0);
 }
 
 int	get_next_char(int fd, char **buffer, int i)
@@ -38,6 +45,8 @@ int	get_next_char(int fd, char **buffer, int i)
 		s_buf[0] = malloc(BUFFER_SIZE * sizeof(char));
 		s_buf[1] = s_buf[0] + BUFFER_SIZE;
 		s_buf[2] = malloc(1 * sizeof(int));
+		if (s_buf[0] == NULL || s_buf[2] == NULL)
+			return (-1);
 	}
 	if (s_buf[1] - s_buf[0] == BUFFER_SIZE)
 	{
@@ -48,7 +57,8 @@ int	get_next_char(int fd, char **buffer, int i)
 	}
 	if (s_buf[1] - s_buf[0] == *((int *)s_buf[2]))
 		return (0);
-	add_one(buffer, i);
+	if (add_one(buffer, i) || *((int *)s_buf[2]) == -1)
+		return (-1);
 	(*buffer)[i] = *((char *)s_buf[1]);
 	s_buf[1]++;
 	return (1);

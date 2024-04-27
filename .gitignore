@@ -1,4 +1,5 @@
 /.vscode/
-/main*
-/tester.sh
-/Makefile
+/get_next_line/gnlTester/
+/get_next_line/output/
+/get_next_line/test.txt/
+/get_next_line/test2.txt/
