@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
+/*   Updated: 2024/04/28 00:39:38 by fgaudio          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 void	str_cpy(char *dest, const char *src, int size)
@@ -21,7 +33,7 @@ int	add_one(char **str, int i)
 		*str = malloc(1);
 		if (*str == NULL)
 			return (1);
-		return 0;
+		return (0);
 	}
 	tmp = malloc(i);
 	if (tmp == NULL)

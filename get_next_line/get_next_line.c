@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
+/*   Updated: 2024/04/28 00:40:49 by fgaudio          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
@@ -15,7 +27,7 @@ char	*get_next_line(int fd)
 		if (err_check == -1)
 			return (NULL);
 		if (buffer[i++] == '\n')
-			break;
+			break ;
 		err_check = get_next_char(fd, &buffer, i);
 	}
 	if (i == 0)
@@ -25,18 +37,8 @@ char	*get_next_line(int fd)
 	return (buffer);
 }
 
-
-
-
-
-
-
-
-
-
-
 // #include <fcntl.h>
-
+//
 // int main()
 // {
 // 	int fd = open("./gnlTester/files/big_line_with_nl", O_RDONLY);
