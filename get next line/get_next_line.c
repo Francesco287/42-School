@@ -2,27 +2,24 @@
 
 char	*get_next_line(int fd)
 {
-	// Suppongo che fd sia riferito a un file.
-	// In questo modo non devo preoccuparmi di tenere traccia dell'offset del file.
-
 	char	*buffer;
-	char	*tmp;
 	int	i;
 
-	buffer = malloc(1);
-	if (read(fd, buffer, 1) == 0)
-		return NULL;
 	i = 0;
-	while(buffer[i] != '\n')
-	{
-		add_one(&buffer, i++);
-		if (read(fd, buffer + i, 1) == 0)
+	while (get_next_char(fd, &buffer, i))
+		if (buffer[i++] == '\n')
 			break;
-	}
-	add_one(&buffer, i++);
+	if (i == 0)
+		return (NULL);
+	add_one(&buffer, i - 1);
 	buffer[i] = '\0';
 	return (buffer);
 }
+
+
+
+
+
 
 
 
@@ -34,10 +31,11 @@ int main()
 {
 	int fd = open("test.txt", O_RDONLY);
 	char *str;
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 13; i++)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);
+		printf("\n-----------------\n");
 		free(str);
 	}
 }
