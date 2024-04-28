@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 21:13:11 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/29 00:05:28 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	add_one(char **str, int i)
 		*str = mod_malloc(ADD_ONE_BUFFER);
 		if (*str == NULL)
 			return (1);
-		(*str)[i + ADD_ONE_BUFFER - 1] = '\0';
+		(*str)[ADD_ONE_BUFFER - 1] = '\0';
 		return (0);
 	}
 	if ((*str)[i] != '\0')
