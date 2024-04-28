@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:11 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 18:40:31 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:01:38 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # ifndef OPEN_MAX
 #  define OPEN_MAX 65534
 # endif
+
+# define ADD_ONE_BUFFER 10000
 
 char	*get_next_line(int fd);
 int		add_one(char **str, int i);

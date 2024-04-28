@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:11 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 18:38:06 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:02:33 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
+
+# define ADD_ONE_BUFFER 10000
 
 char	*get_next_line(int fd);
 int		add_one(char **str, int i);

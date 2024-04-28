@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 18:40:48 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:08:51 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 // {
 // 	double tot_time = 0;
 // 	char *str;
-// 	for (int i = 0; i < 100; i++)
+// 	for (int i = 0; i < 10000; i++)
 // 	{
 // 		int fd = open("test.txt", O_RDONLY);
 // 		clock_t begin = clock();
@@ -55,5 +55,5 @@ char	*get_next_line(int fd)
 // 		close(fd);
 // 		tot_time += (double)(end - begin) / CLOCKS_PER_SEC;
 // 	}
-// 	printf("Average time: %lf\n", tot_time / 100);
+// 	printf("Average time: %lf\n", tot_time / 10000);
 // }
