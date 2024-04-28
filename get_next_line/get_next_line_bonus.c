@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 15:14:41 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:40:48 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,27 @@ char	*get_next_line(int fd)
 	if (i == 0)
 		return (NULL);
 	add_one(&buffer, i);
-	buffer[i] = '\0';
+	buffer[i++] = '\0';
+	if (free_unused(&buffer, i))
+		return (NULL);
 	return (buffer);
 }
 
 // #include <fcntl.h>
-
+// #include <time.h>
 // int main()
 // {
-// 	int fd = open("test.txt", O_RDONLY);
-// 	int fd2 = open("test2.txt", O_RDONLY);
+// 	double tot_time = 0;
 // 	char *str;
-// 	for (int i = 0; i < 10; i++)
+// 	for (int i = 0; i < 100; i++)
 // 	{
+// 		int fd = open("test.txt", O_RDONLY);
+// 		clock_t begin = clock();
 // 		str = get_next_line(fd);
-// 		printf("%s", str);
-// 		printf("\n-----------------\n");
 // 		free(str);
-// 		str = get_next_line(fd2);
-// 		printf("%s", str);
-// 		printf("\n-----------------\n");
-// 		free(str);
+// 		clock_t end = clock();
+// 		close(fd);
+// 		tot_time += (double)(end - begin) / CLOCKS_PER_SEC;
 // 	}
+// 	printf("Average time: %lf\n", tot_time / 100);
 // }
