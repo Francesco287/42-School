@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 19:03:00 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 21:13:11 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	str_cpy(char *dest, const char *src, int size)
 	}
 }
 
-void	*mod_malloc(size_t nmemb, size_t size)
+void	*mod_malloc(size_t nmemb)
 {
 	void	*ptr;
 	size_t	i;
 
-	ptr = malloc(nmemb * size);
+	ptr = malloc(nmemb);
 	if (!ptr)
 		return (NULL);
 	i = 0;
-	while (i < nmemb * size)
+	while (i < nmemb)
 	{
 		((unsigned char *)ptr)[i] = '1';
 		i++;
@@ -47,7 +47,7 @@ int	add_one(char **str, int i)
 
 	if (i == 0)
 	{
-		*str = mod_malloc(ADD_ONE_BUFFER, 1);
+		*str = mod_malloc(ADD_ONE_BUFFER);
 		if (*str == NULL)
 			return (1);
 		(*str)[i + ADD_ONE_BUFFER - 1] = '\0';
@@ -55,12 +55,12 @@ int	add_one(char **str, int i)
 	}
 	if ((*str)[i] != '\0')
 		return (0);
-	tmp = mod_malloc(i, 1);
+	tmp = mod_malloc(i);
 	if (tmp == NULL)
 		return (1);
 	str_cpy(tmp, *str, i);
 	free(*str);
-	*str = mod_malloc(i + ADD_ONE_BUFFER, 1);
+	*str = mod_malloc(i + ADD_ONE_BUFFER);
 	if (*str == NULL)
 		return (1);
 	str_cpy(*str, tmp, i);
