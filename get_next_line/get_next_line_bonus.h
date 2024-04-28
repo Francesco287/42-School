@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:11 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 01:10:07 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:40:31 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 char	*get_next_line(int fd);
 int		add_one(char **str, int i);
 int		get_next_char(int fd, char **buffer, int i);
+int		free_unused(char **str, int i);
 
 #endif
