@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 01:09:47 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 15:14:41 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	int		i;
 	int		err_check;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || OPEN_MAX < 0)
 		return (NULL);
 	i = 0;
 	err_check = get_next_char(fd, &buffer, i);

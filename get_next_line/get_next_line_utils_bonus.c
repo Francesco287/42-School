@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 01:09:58 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/04/28 15:17:08 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ int	get_next_char(int fd, char **buffer, int i)
 	}
 	if (s_buf[fd][1] - s_buf[fd][0] == BUFFER_SIZE)
 	{
-		*((int *)s_buf[fd][2]) = (int)read(fd, (char *)s_buf[fd][0], BUFFER_SIZE);
+		*((int *)s_buf[fd][2]) = read(fd, (char *)s_buf[fd][0], BUFFER_SIZE);
 		if (*((int *)s_buf[fd][2]) == 0)
 			return (0);
 		s_buf[fd][1] = s_buf[fd][0];
 	}
 	if (s_buf[fd][1] - s_buf[fd][0] == *((int *)s_buf[fd][2]))
 		return (0);
-	if (add_one(buffer, i) || *((int *)s_buf[fd][2]) == -1)
+	if (*((int *)s_buf[fd][2]) == -1)
 		return (-1);
-	(*buffer)[i] = *((char *)s_buf[fd][1]);
-	s_buf[fd][1]++;
+	if (add_one(buffer, i))
+		return (-1);
+	(*buffer)[i] = *((char *)(s_buf[fd][1]++));
 	return (1);
 }
