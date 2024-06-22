@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajordan- <ajordan-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/01 13:25:45 by ajordan-          #+#    #+#             */
-/*   Updated: 2021/10/20 00:19:01 by ajordan-         ###   ########.fr       */
+/*   Created: 2024/06/22 22:37:09 by fgaudio           #+#    #+#             */
+/*   Updated: 2024/06/22 22:37:10 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
