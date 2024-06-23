@@ -6,48 +6,51 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:28:45 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/06/22 22:28:53 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:16:10 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <unistd.h>
 
-char	*ft_read_to_left_str(int fd, char *left_str)
+char	*get_line(char *strl)
 {
-	char	*buff;
-	int		rd_bytes;
+	int		i;
+	char	*str;
 
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
+	i = 0;
+	if (!strl[i])
 		return (NULL);
-	rd_bytes = 1;
-	while (!ft_strchr(left_str, '\n') && rd_bytes != 0)
+	while (strl[i] && strl[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (strl[i] && strl[i] != '\n')
 	{
-		rd_bytes = read(fd, buff, BUFFER_SIZE);
-		if (rd_bytes == -1)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[rd_bytes] = '\0';
-		left_str = ft_strjoin(left_str, buff);
+		str[i] = strl[i];
+		i++;
 	}
-	free(buff);
-	return (left_str);
+	if (strl[i] == '\n')
+	{
+		str[i] = strl[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*left_str;
+	static char	*strl;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	left_str = ft_read_to_left_str(fd, left_str);
-	if (!left_str)
+	strl = rftls(fd, strl);
+	if (!strl)
 		return (NULL);
-	line = ft_get_line(left_str);
-	left_str = ft_new_left_str(left_str);
+	line = get_line(strl);
+	strl = renew_left_str(strl);
 	return (line);
 }
