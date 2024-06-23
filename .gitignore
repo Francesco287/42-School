@@ -3,6 +3,10 @@
 /gnl_nm/gnlTester/
 /get_next_line/output
 /get_next_line/a.out
-/get_next_line/test.txt
-/get_next_line/test2.txt
-/get_next_line/42-Get-next-line/
+/get_next_line/file.txt
+/get_next_line/main.c
+/get_next_line/run.sh
+/gnl_nm/a.out
+/gnl_nm/file.txt
+/gnl_nm/main.c
+/gnl_nm/run.sh
