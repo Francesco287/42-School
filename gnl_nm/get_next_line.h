@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:29:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/06/23 17:16:20 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:28:00 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*rftls(int fd, char *strl);
 char	*get_line(char *strl);
 char	*ft_strjoin(char *strl, char *buff);
 size_t	ft_strlen(char *s);
-char	*renew_left_str(char *strl);
+char	*renew_strl(char *strl);
 
 #endif

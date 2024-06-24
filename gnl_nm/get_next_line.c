@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:28:45 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/06/23 17:16:10 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/06/24 19:28:00 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ char	*get_next_line(int fd)
 	if (!strl)
 		return (NULL);
 	line = get_line(strl);
-	strl = renew_left_str(strl);
+	strl = renew_strl(strl);
 	return (line);
 }
