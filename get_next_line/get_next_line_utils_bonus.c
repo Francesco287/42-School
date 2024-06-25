@@ -6,7 +6,7 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:04 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/29 00:05:17 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:21:50 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,27 @@ int	add_one(char **str, int i)
 	return (0);
 }
 
-int	get_next_char(int fd, char **buffer, int i)
+int	refill(char *(*s_buf)[2], int fd)
 {
-	static void	*s_buf[OPEN_MAX][3];
+	int			chr_read;
+	char		*tmp;
 
-	if (s_buf[fd][0] == NULL)
+	tmp = malloc(BUFFER_SIZE);
+	if (tmp == NULL)
+		return (-1);
+	chr_read = read(fd, tmp, BUFFER_SIZE);
+	if (chr_read == 0 || chr_read == -1)
 	{
-		s_buf[fd][0] = malloc(BUFFER_SIZE * sizeof(char));
-		s_buf[fd][1] = s_buf[fd][0] + BUFFER_SIZE;
-		s_buf[fd][2] = malloc(1 * sizeof(int));
-		if (s_buf[fd][0] == NULL || s_buf[fd][2] == NULL)
+		free(tmp);
+		return (chr_read);
+	}
+	str_cpy((*s_buf)[0], tmp, chr_read);
+	free(tmp);
+	if (chr_read != BUFFER_SIZE)
+		if (free_unused(&((*s_buf)[0]), chr_read + 1))
 			return (-1);
-	}
-	if (s_buf[fd][1] - s_buf[fd][0] == BUFFER_SIZE)
-	{
-		*((int *)s_buf[fd][2]) = read(fd, (char *)s_buf[fd][0], BUFFER_SIZE);
-		if (*((int *)s_buf[fd][2]) == 0)
-			return (0);
-		s_buf[fd][1] = s_buf[fd][0];
-	}
-	if (s_buf[fd][1] - s_buf[fd][0] == *((int *)s_buf[fd][2]))
-		return (0);
-	if (*((int *)s_buf[fd][2]) == -1)
-		return (-1);
-	if (add_one(buffer, i))
-		return (-1);
-	(*buffer)[i] = *((char *)(s_buf[fd][1]++));
+	(*s_buf)[0][chr_read] = '\0';
+	(*s_buf)[1] = (*s_buf)[0];
 	return (1);
 }
 

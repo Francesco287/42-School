@@ -6,11 +6,40 @@
 /*   By: fgaudio <fgaudio@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 00:39:08 by fgaudio           #+#    #+#             */
-/*   Updated: 2024/04/28 18:36:38 by fgaudio          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:18:10 by fgaudio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	get_next_char(int fd, char **buffer, int i)
+{
+	static char	*s_buf[2];
+	int			refill_return;
+
+	if (s_buf[0] == NULL)
+	{
+		s_buf[0] = malloc(BUFFER_SIZE + 1);
+		s_buf[0][BUFFER_SIZE] = '\0';
+		s_buf[1] = s_buf[0] + BUFFER_SIZE;
+		if (s_buf[0] == NULL)
+			return (-1);
+	}
+	if (!*(s_buf[1]))
+	{
+		refill_return = refill(&s_buf, fd);
+		if (refill_return != 1)
+		{
+			free(s_buf[0]);
+			s_buf[0] = NULL;
+			return (refill_return);
+		}
+	}
+	if (add_one(buffer, i))
+		return (-1);
+	(*buffer)[i] = *(s_buf[1]++);
+	return (1);
+}
 
 char	*get_next_line(int fd)
 {
@@ -38,22 +67,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (buffer);
 }
-
-// #include <fcntl.h>
-// #include <time.h>
-// int main()
-// {
-// 	double tot_time = 0;
-// 	char *str;
-// 	for (int i = 0; i < 10000; i++)
-// 	{
-// 		int fd = open("test.txt", O_RDONLY);
-// 		clock_t begin = clock();
-// 		str = get_next_line(fd);
-// 		free(str);
-// 		clock_t end = clock();
-// 		close(fd);
-// 		tot_time += (double)(end - begin) / CLOCKS_PER_SEC;
-// 	}
-// 	printf("Average time: %lf\n", tot_time / 10000);
-// }
